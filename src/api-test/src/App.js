@@ -8,7 +8,9 @@ const App = () => {
   return (
     <div className="App">
       <p>Welcome to the user API testing React App!</p>
+      <hr />
       <ControlPanel />
+      <hr />
       <UserList />
     </div>
   );

@@ -11,7 +11,10 @@ class UserList extends React.Component {
   deleteUser = e => {
     e.preventDefault();
 
-    // call API delete user by id
+    axios
+      .delete(`http://localhost:4000/api/users/${e.target.classList[0]}`)
+        .then(res => this.getUsers())
+        .catch(err => console.log(err))
   }
 
   getUsers = () => {    
@@ -35,7 +38,7 @@ class UserList extends React.Component {
       <div className="user-list">
         {
           this.state.users.length > 0 ?
-            this.state.users.map(user => <User key={user.id} user={user} />)
+            this.state.users.map(user => <User key={user.id} user={user} deleteUser={this.deleteUser} />)
           :
             <p>The users can not be found.</p>
         }
